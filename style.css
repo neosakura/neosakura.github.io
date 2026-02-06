@@ -1,0 +1,312 @@
+/* Project: Corporate Static Site (2026 Edition)
+    Theme: Modern Minimalist / Investor Relations Friendly
+    Colors: Background #1a1a1a, Accent #e57399
+*/
+
+/* --- Base Reset & Global Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-family: 'Noto Sans JP', 'Roboto', sans-serif;
+    line-height: 1.8;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased; /* 文字をより滑らかに表示 */
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+/* --- HERO Section (First View) --- */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.company-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 700;
+    letter-spacing: 0.18em; /* 緻密なカーニング */
+    margin-bottom: 0.3em;
+    position: relative;
+    display: inline-block;
+    
+    /* アニメーション：読み込み時にふわりと浮き上がる */
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.company-name::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #e57399; /* アクセントカラーのアンダーライン */
+}
+
+.established {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    letter-spacing: 0.5em;
+    color: #e57399;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeInUp 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.6s;
+}
+
+/* --- Section Common Styles --- */
+.section {
+    padding: 160px 0;
+}
+
+.accent-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.4em;
+    color: #e57399;
+    margin-bottom: 50px;
+    border-left: 2px solid #e57399;
+    padding-left: 20px;
+}
+
+/* --- NEWS Section --- */
+.news-item {
+    border-bottom: 1px solid #333;
+    padding: 25px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.date {
+    font-family: 'Roboto', sans-serif;
+    color: #777;
+    min-width: 120px;
+}
+
+/* --- COMPANY Section (Table Styles) --- */
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.info-table th {
+    width: 30%;
+    text-align: left;
+    padding: 25px 0;
+    border-bottom: 1px solid #333;
+    color: #777;
+    font-weight: normal;
+    font-size: 0.9rem;
+    vertical-align: top; /* 事業内容が複数行になっても見出しを上に固定 */
+}
+
+.info-table td {
+    padding: 25px 0;
+    border-bottom: 1px solid #333;
+    font-size: 1rem;
+}
+
+/* 事業内容の箇条書きスタイル */
+.business-list {
+    list-style: none;
+    padding: 0;
+}
+
+.business-list li {
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 1.2em;
+}
+
+.business-list li::before {
+    content: '・';
+    position: absolute;
+    left: 0;
+}
+
+/* --- CONTACT Section (Spam Protection Styles) --- */
+.contact-notice {
+    font-size: 0.8rem;
+    color: #e57399;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+.mail-box {
+    display: inline-block;
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.mail-address {
+    font-size: clamp(1.2rem, 5vw, 1.8rem);
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.2;
+    margin-bottom: 4px;
+}
+
+.mail-address span {
+    color: #e57399;
+    font-size: 0.9em;
+    margin: 0 4px;
+}
+
+.mail-note {
+    font-size: 0.7rem;
+    color: #777;
+    letter-spacing: 0.05em;
+    margin: 0;
+}
+
+/* --- FOOTER Section --- */
+footer {
+    padding: 60px 0 40px;
+    text-align: center;
+}
+
+.footer-nav {
+    margin-bottom: 25px;
+}
+
+.footer-nav a {
+    color: #777;
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    transition: color 0.3s, border-bottom 0.3s;
+    text-transform: uppercase;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+}
+
+.footer-nav a:hover {
+    color: #e57399;
+    border-bottom: 1px solid #e57399;
+}
+
+.copyright {
+    font-size: 0.65rem;
+    color: #444;
+    letter-spacing: 0.1em;
+}
+
+/* --- Animations (Scroll Trigger) --- */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+.fade-in-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Mobile Adjustments (Responsive) --- */
+@media (max-width: 600px) {
+    .info-table th {
+        width: 100%;
+        display: block;
+        padding-bottom: 5px;
+        border-bottom: none;
+    }
+    .info-table td {
+        width: 100%;
+        display: block;
+        padding-top: 5px;
+    }
+    .section {
+        padding: 100px 0;
+    }
+    .company-name {
+        letter-spacing: 0.1em; /* モバイルでは少し詰め気味に */
+    }
+}
+
+/* --- Scroll Down Icon (最新版：スクロールで消える) --- */
+.scroll-down {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards 1.5s;
+    pointer-events: none; /* アイコンがクリックの邪魔をしないように */
+    z-index: 10;
+}
+
+/* スクロールを検知して消すためのJavaScript用クラス（後述） */
+.scroll-down.hidden {
+    opacity: 0 !important;
+    transition: opacity 0.5s ease;
+}
+
+.scroll-down span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    color: #e57399;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+/* 縦線の動き */
+.scroll-down::after {
+    content: '';
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, #e57399 0%, transparent 100%);
+    animation: scrollLine 2s infinite;
+}
+
+/* スクロール線のアニメーション */
+@keyframes scrollLine {
+    0% {
+        transform: scaleY(0);
+        transform-origin: top;
+    }
+    50% {
+        transform: scaleY(1);
+        transform-origin: top;
+    }
+    50.1% {
+        transform: scaleY(1);
+        transform-origin: bottom;
+    }
+    100% {
+        transform: scaleY(0);
+        transform-origin: bottom;
+    }
+}
+
+/* 全体フェードイン（HERO用） */
+@keyframes fadeIn {
+    to { opacity: 1; }
+}

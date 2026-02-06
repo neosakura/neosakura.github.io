@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEO SAKURA株式会社</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Noto+Sans+JP:wght@400;700&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="company-name">NEO SAKURA</h1>
+                <p class="established">Established 2026</p>
+
+                <div class="scroll-down">
+                    <span>SCROLL</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="news" class="section fade-in-scroll">
+            <div class="container">
+                <h2 class="accent-title">NEWS</h2>
+                <div class="news-list">
+                    <div class="news-item">
+                        <span class="date">2026.02.05</span>
+                        <span class="text">新規設立につき、公式ウェブサイトを公開いたしました。</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="company" class="section fade-in-scroll">
+            <div class="container">
+                <h2 class="accent-title">COMPANY</h2>
+                <table class="info-table">
+                    <tbody>
+                        <tr><th>名称</th><td>NEO SAKURA株式会社</td></tr>
+                        <tr><th>所在地</th><td>東京都中野区本町2丁目46番1号 中野坂上サンブライトツイン14階</td></tr>
+                        <tr><th>代表者</th><td>塚中 健介</td></tr>
+                        <tr><th>設立</th><td>2026年1月5日</td></tr>
+                        <tr><th>事業内容</th><td>ゲームソフトウェア企画、開発、販売、等</td></tr>
+                        <tr><th>資本金</th><td>999万円</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="contact" class="section fade-in-scroll">
+            <div class="container">
+                <h2 class="accent-title">CONTACT</h2>
+                <div class="contact-content">
+                    <p class="contact-notice">※営業目的のお問い合わせは固くお断りいたします。</p>
+                    <div class="mail-wrapper">
+                    <div class="mail-wrapper">
+                        <div class="mail-box">
+                            <p class="mail-address">info<span>[at]</span>neo-sakura.com</p>
+                            <p class="mail-note">※ [at] を @ に置き換えて送信してください</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <nav class="footer-nav">
+            <a href="privacy.html">Privacy Policy</a>
+        </nav>
+
+        <p class="copyright">&copy; 2026 NEO SAKURA株式会社</p>
+    </footer>
+
+    <script>
+        const scrollIcon = document.querySelector('.scroll-down');
+
+        window.addEventListener('scroll', () => {
+            // 50px以上スクロールしたらアイコンに 'hidden' クラスをつけて消す
+            if (window.scrollY > 50) {
+                scrollIcon.classList.add('hidden');
+            } else {
+                scrollIcon.classList.remove('hidden');
+            }
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in-scroll').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
